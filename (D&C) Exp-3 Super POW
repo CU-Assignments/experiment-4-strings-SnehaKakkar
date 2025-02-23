@@ -1,0 +1,30 @@
+class Solution {
+
+    private static final int MOD=1337;
+
+    private int powerMod(int x,int y,int mod)
+    {
+        int res=1;
+        x%=mod;
+        while(y>0)
+        {
+            if(y%2==1)
+            {
+                res=(res*x)%mod;
+            }
+            x=(x*x)%mod;
+            y/=2;
+        }
+        return res;
+    }
+
+    public int superPow(int a, int[] b) {
+        int res=1;
+        a%=MOD;
+        for(int digit:b)
+        {
+            res=powerMod(res,10,MOD)*powerMod(a,digit,MOD)%MOD;
+        }
+        return res;
+    }
+}
